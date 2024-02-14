@@ -1,11 +1,22 @@
-const express = require('express')
-const app = express()
+const cors = require("cors");
+const express = require("express");
+const app = express();
+const connectDb = require("./src/config/connectDB");
+const router = require("./src/routes/index");
+app.use(express.json());
+app.use(cors())
+// firebase.init();
+router.init(app);
+
+
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  try {
+    console.log(`Example app listening on port ---> ${port}`)
+    // connectDb()
+  } catch (error) {
+    console.log('show error -> ', error)
+  }
+
 })
