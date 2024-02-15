@@ -6,7 +6,6 @@ const router = require("./src/routes/index");
 app.use(express.json());
 app.use(cors())
 // firebase.init();
-router.init(app);
 
 
 const port = 3000
@@ -14,6 +13,7 @@ const port = 3000
 app.listen(port, () => {
   try {
     console.log(`Example app listening on port ---> ${port}`)
+    app.use('/', router);
     // connectDb()
   } catch (error) {
     console.log('show error -> ', error)
